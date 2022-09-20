@@ -482,5 +482,14 @@ if (game.ask("drink the iced tea", "walk 10 miles")) {
     game.showLongText("the dinosaur says \"give me something\"", DialogLayout.Bottom)
     if (game.ask("give the dinosaur $2", "give the dinosaur iced tea")) {
         game_over("the dinosaur eats you")
+    } else {
+        game.showLongText("the iced tea gave the dinosaur food poisoning, its dead", DialogLayout.Bottom)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+        if (game.ask("buy water with your $2", "drink the rest of the iced tea")) {
+            game.showLongText("the water saved you", DialogLayout.Bottom)
+            game.over(true)
+        } else {
+            game_over("you also got food poisoning, like the dinosaur")
+        }
     }
 }
